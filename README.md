@@ -28,17 +28,18 @@ Siga estas etapas para executar o projeto em seu ambiente local:
    git clone https://github.com/seu-usuario/CollatzGUI.git
 Navegue até o diretório do projeto:
 
-''shell
+
+   ''shell
 Copy code
 cd CollatzGUI
 Instale as dependências usando o pip:
 
-''shell
+   ''shell
 Copy code
 pip install -r requirements.txt
 Execute o script do projeto:
 
-''shell
+   ''shell
 Copy code
 python collatz_gui.py
 A interface gráfica será aberta. Digite um número inicial e clique no botão "Enviar" para iniciar o cálculo da sequência de Collatz.
@@ -54,22 +55,22 @@ Faça um fork do repositório.
 
 Crie uma branch para suas alterações:
 
-''shell
+   ''shell
 Copy code
 git checkout -b minha-branch
 Faça as alterações desejadas e adicione os arquivos modificados:
 
-''shell
+   ''shell
 Copy code
 git add .
 Faça o commit das alterações:
 
-''shell
+   ''shell
 Copy code
 git commit -m "Minhas alterações"
 Faça push das alterações para a sua branch:
 
-''shell
+   ''shell
 Copy code
 git push origin minha-branch
-``
+   ``
