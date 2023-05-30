@@ -81,8 +81,8 @@ def Collatz():
     string_number = str(counter)
     string_number2 = str(orbital)
     list.insert(END, c0)
-    list.insert(END, "Steps: " + string_number)
-    list.insert(END, "The highest number: " + string_number2)
+    list.insert(END, "Etapas: " + string_number)
+    list.insert(END, "O maior número: " + string_number2)
 
     # Chama a função para plotar o gráfico
     plot_grafico()
