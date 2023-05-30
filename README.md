@@ -1,4 +1,5 @@
-##A hipótese de Collatz
+
+#A hipótese de Collatz
 
 ## Descrição
 O projeto "CollatzGUI" é uma implementação interativa e visual do famoso problema matemático conhecido como "A Hipótese de Collatz". Essa hipótese, também chamada de "Conjectura 3n+1", é uma sequência numérica que, independentemente do número inicial escolhido, eventualmente chega ao número 1.
