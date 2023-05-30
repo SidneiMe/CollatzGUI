@@ -13,9 +13,9 @@ def plot_grafico():
 
     # Configurações do gráfico
     ax.plot(range(1, len(vetor) + 1), vetor, color="lime", linewidth=2)
-    ax.set_xlabel("Index", color="white")
-    ax.set_ylabel("Value", color="white")
-    ax.set_title("Intermediate Values", color="white", fontsize=16)
+    ax.set_xlabel("Indice", color="white")
+    ax.set_ylabel("Valor", color="white")
+    ax.set_title("Valores intermediários", color="white", fontsize=16)
     ax.set_facecolor("black")
 
     # Configuração dos eixos
@@ -152,7 +152,7 @@ label_1 = Label(
 # Rótulo para instrução
 label_2 = Label(
     root,
-    text="Type a number:",
+    text="Digite um número:",
     font="Times 13 bold",
     bg="black",
     fg=lime,
