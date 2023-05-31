@@ -3,6 +3,8 @@ from tkinter import ttk
 from PIL import ImageTk, Image
 import numpy as np
 import matplotlib.pyplot as plt
+import sys
+
 
 # Função para plotar o gráfico com base nos valores do vetor
 def plot_grafico():
@@ -42,47 +44,54 @@ def plot_grafico():
     label_imagem.configure(image=photo)
     label_imagem.image = photo
 
-
 # Função para calcular a sequência de Collatz com base no número digitado pelo usuário
 def Collatz():
-    counter = 0
-    orbital = 0
 
-    # Limpa a lista, atualiza a interface e obtém o número digitado
-    list.delete(0, END)
-    list_1.clear()
-    root.update()
-    c0 = int(text_c0.get())
+    try:
+        counter = 0
+        orbital = 0
 
-    # Adiciona o número inicial à lista
-    list_1.append(c0)
+        # Limpa a lista, atualiza a interface e obtém o número digitado
+        list.delete(0, END)
+        list_1.clear()
+        root.update()
+        c0 = int(text_c0.get())
 
-    while c0 != 1:
+        if c0 < 1:
+            sys.exit()
+
+        # Adiciona o número inicial à lista
+        list_1.append(c0)
+
+        while c0 != 1:
         # Insere o número atual na lista
 
-        list.insert(counter, c0)
-        # Se o número atual é par, divide por 2
-        if c0 % 2 == 0:
-            c0 /= 2
-            counter += 1
-            list_1.append(c0)
+            list.insert(counter, c0)
+            # Se o número atual é par, divide por 2
+            if c0 % 2 == 0:
+                c0 /= 2
+                counter += 1
+                list_1.append(c0)
 
-        else:
-            # Se o número atual é impar, multiplica por 3 e adiciona 1
-            c0 = 3 * c0 + 1
-            counter += 1
-            list_1.append(c0)
+            else:
+                # Se o número atual é impar, multiplica por 3 e adiciona 1
+                c0 = 3 * c0 + 1
+                counter += 1
+                list_1.append(c0)
 
-        # Atualiza o número orbital (maior encontrado até agora)
-        if orbital < c0:
-            orbital = c0
+            # Atualiza o número orbital (maior encontrado até agora)
+            if orbital < c0:
+                orbital = c0
 
-    # Insere número final, o número de passos e o maior número na lista
-    string_number = str(counter)
-    string_number2 = str(orbital)
-    list.insert(END, c0)
-    list.insert(END, "Etapas: " + string_number)
-    list.insert(END, "O maior número: " + string_number2)
+        # Insere número final, o número de passos e o maior número na lista
+        string_number = str(counter)
+        string_number2 = str(orbital)
+        list.insert(END, c0)
+        list.insert(END, "Etapas: " + string_number)
+        list.insert(END, "O maior número: " + string_number2)
+
+    except:
+        error()
 
     # Chama a função para plotar o gráfico
     plot_grafico()
@@ -91,6 +100,49 @@ def Collatz():
     list.see(END)
     scrollbar.set(*list.yview())
 
+# Função para exibir janela de erro caso a entrada não seja válida
+def error():
+    # Define uma janela superior
+    erro = Toplevel()
+    erro.title("Erro.")
+
+    # Dimensões da janela superior
+    width = 500
+    height = 110
+
+    # Define a cor do plano de fundo como preta
+    erro["bg"] = "black"
+
+    # Centraliza a janela erro na tela
+    posx = largura_screen / 2 - width / 2
+    posy = altura_screen / 2 - height / 2
+    erro.geometry("%dx%d+%d+%d" % (width, height, posx, posy))
+
+    # Define o tamanho mínimo e máximo da janela
+    erro.minsize(500, 110)
+    erro.maxsize(500, 110)
+
+    # Rotulo mensagem de erro
+    label_erro = Label(
+        erro,
+        text = "Utilize um algorismo válido. ",
+        font = "Times 25 bold",
+        bg = "black",
+        fg = "red",
+        padx = 10,
+        pady = 7,
+    ).pack()
+
+    # Botão erro
+    btn_erro = Button(
+        erro,
+        text = "OK",
+        bg = "black",
+        fg = "red",
+        width = 4,
+        height = 2,
+        command = erro.destroy,
+    ).pack()
 
 # Lista vazia para armazenar os valores da sequência de Collatz
 list_1 = []
@@ -115,7 +167,7 @@ root.geometry("%dx%d+%d+%d" % (width, height, posx, posy))
 root.minsize(1280, 620)
 root.maxsize(1280, 620)
 
-# Define a cor de fundo da janela como preto
+# Define a cor de fundo da janela como preta
 root["bg"] = "black"
 
 # Define o título da janela
@@ -188,8 +240,7 @@ text_c0 = Entry(
     root, 
     bg="lime", 
     fg="black", 
-    width="100", 
-    text="Digite um número."
+    width="100",
 )
 
 # Botão para iniciar o algoritmo de Collatz
