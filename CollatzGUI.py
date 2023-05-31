@@ -125,7 +125,7 @@ def error():
     # Rotulo mensagem de erro
     label_erro = Label(
         erro,
-        text = "Utilize um algorismo válido. ",
+        text = "Utilize um número maior que 1. ",
         font = "Times 25 bold",
         bg = "black",
         fg = "red",
